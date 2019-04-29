@@ -1,0 +1,13 @@
+mysql:
+  image: percona:5.7
+  ports:
+    - "3306:3306"
+    - "11211:11211"
+  environment:
+    MYSQL_DATABASE: app
+    MYSQL_USER: app
+    MYSQL_PASSWORD: app
+    MYSQL_ROOT_PASSWORD: app
+  volumes:
+    - ./ps-entry.sh:/usr/local/bin/docker-entrypoint.sh
+    - ./init-with-memcached.sql:/docker-entrypoint-initdb.d/01-init-with-memcached.sql
